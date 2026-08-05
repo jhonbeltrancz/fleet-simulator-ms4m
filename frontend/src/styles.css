@@ -1,0 +1,387 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: #1e2733;
+  background: #f2f4f7;
+}
+
+#root,
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 20px;
+  background: #10314f;
+  color: #fff;
+}
+
+.topbar h1 {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.new-sim-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+}
+
+.seed-input {
+  width: 150px;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.btn-primary {
+  background: #e8a33d;
+  color: #26221a;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #f0b459;
+}
+
+.btn-secondary {
+  background: #e3e8ee;
+  color: #1e2733;
+}
+
+.btn-speed-active {
+  background: #2e86de;
+  color: #fff;
+}
+
+.error-banner {
+  padding: 10px 20px;
+  background: #fbe3e4;
+  color: #8f1f24;
+  font-size: 0.9rem;
+}
+
+.layout {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.map-area {
+  flex: 1;
+  position: relative;
+  min-width: 0;
+}
+
+.map {
+  height: 100%;
+  width: 100%;
+}
+
+.legend {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  z-index: 1000;
+  display: flex;
+  gap: 14px;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
+  font-size: 0.8rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-line {
+  width: 18px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #d33, #36c, #3a3);
+}
+
+.legend-truck {
+  background: #d62839;
+  color: #fff;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.truck-icon,
+.flag-icon {
+  background: transparent;
+  border: none;
+}
+
+.truck-dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+.sidebar {
+  width: 360px;
+  overflow-y: auto;
+  background: #fff;
+  border-left: 1px solid #dde3ea;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar h2 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.empty-state {
+  font-size: 0.85rem;
+  color: #5b6877;
+  background: #f5f7fa;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.truck-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.truck-card {
+  border: 1px solid #e1e7ee;
+  border-radius: 8px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.truck-card:hover {
+  border-color: #b8c4d2;
+}
+
+.truck-card.selected {
+  border-color: #2e86de;
+  box-shadow: 0 0 0 2px rgba(46, 134, 222, 0.25);
+}
+
+.truck-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.truck-badge {
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.status-chip {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.status-en_route {
+  background: #e1efff;
+  color: #1a5dab;
+}
+
+.status-finished {
+  background: #e2f5e8;
+  color: #1b7f37;
+}
+
+.truck-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.8rem;
+}
+
+.truck-speed {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.truck-route {
+  color: #5b6877;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.progress-track {
+  height: 6px;
+  background: #edf1f5;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #2e86de;
+  transition: width 0.4s linear;
+}
+
+.truck-progress {
+  font-size: 0.72rem;
+  color: #5b6877;
+}
+
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.report-header h3 {
+  font-size: 1rem;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.report-table th,
+.report-table td {
+  border-bottom: 1px solid #e1e7ee;
+  padding: 6px 6px;
+  text-align: right;
+}
+
+.report-table th:first-child,
+.report-table td:first-child {
+  text-align: left;
+}
+
+.dev-above {
+  color: #1b7f37;
+}
+
+.dev-below {
+  color: #a03410;
+}
+
+.fleet-avg {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.explanation {
+  margin-top: 12px;
+  background: #f5f7fa;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 0.83rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.explanation h4 {
+  font-size: 0.85rem;
+}
+
+.screen-state {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  color: #384452;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid #dde3ea;
+  }
+
+  .map-area {
+    min-height: 55vh;
+  }
+}
