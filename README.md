@@ -2,9 +2,9 @@
 
 Aplicación full stack que carga una red vial minera desde un JSON, la visualiza en un mapa y simula cinco camiones desplazándose desde ubicaciones de carga hacia ubicaciones de descarga sobre los tramos disponibles, con reporte de velocidades y explicación en lenguaje humano.
 
-- **Backend:** Python 3.12+ / FastAPI — desplegado en Railway
-- **Frontend:** React (Vite) + Leaflet — desplegado en Vercel
-- **Documentación interactiva de la API:** `GET /docs` (Swagger UI generado por OpenAPI)
+- **Frontend (demo):** https://fleet-simulator-ms4m.vercel.app — React (Vite) + Leaflet, desplegado en Vercel
+- **Backend (API):** https://fleet-simulator-ms4m-production.up.railway.app — Python 3.12 / FastAPI, desplegado en Railway
+- **Documentación interactiva de la API:** https://fleet-simulator-ms4m-production.up.railway.app/docs
 
 ## Arquitectura
 
@@ -74,9 +74,9 @@ La documentación se genera automáticamente desde el código (OpenAPI) y se sir
 
 | Recurso | Local | Producción |
 |---|---|---|
-| Swagger UI (interactiva, permite ejecutar endpoints) | http://localhost:8000/docs | `<URL-backend>/docs` |
-| ReDoc (solo lectura) | http://localhost:8000/redoc | `<URL-backend>/redoc` |
-| Especificación OpenAPI (JSON) | http://localhost:8000/openapi.json | `<URL-backend>/openapi.json` |
+| Swagger UI (interactiva, permite ejecutar endpoints) | http://localhost:8000/docs | https://fleet-simulator-ms4m-production.up.railway.app/docs |
+| ReDoc (solo lectura) | http://localhost:8000/redoc | https://fleet-simulator-ms4m-production.up.railway.app/redoc |
+| Especificación OpenAPI (JSON) | http://localhost:8000/openapi.json | https://fleet-simulator-ms4m-production.up.railway.app/openapi.json |
 
 Resumen de endpoints:
 
